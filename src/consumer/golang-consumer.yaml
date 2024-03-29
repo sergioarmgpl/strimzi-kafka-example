@@ -1,0 +1,33 @@
+apiVersion: v1
+kind: Namespace
+metadata:
+  creationTimestamp: null
+  name: project
+spec: {}
+status: {}
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  creationTimestamp: null
+  labels:
+    app: golang-consumer
+  name: golang-consumer
+  namespace: project
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: golang-consumer
+  strategy: {}
+  template:
+    metadata:
+      creationTimestamp: null
+      labels:
+        app: golang-consumer
+    spec:
+      containers:
+      - image: sergioarmgpl/golang-consumer
+        name: golang-consumer
+        resources: {}
+status: {}
